@@ -1,0 +1,332 @@
+/* Adnex design system: light web theme.
+   The Adnex website design export's stylesheets (Claude Design project
+   019dcc16-13cd-7ab3-a6e8-b40cb35c0f81; BRAND.md v2, 23/10/2026; adnex-site DESIGN.md),
+   carried verbatim and in load order: tokens/fonts.css, tokens/colors.css,
+   tokens/typography.css, tokens/spacing.css, tokens/effects.css, tokens/base.css,
+   components/components.css. Published into the Adnex design system on 24/10/2026.
+   Roles and rules: website/DESIGN.md. Colour values match project/tokens.json; where
+   the two differ, tokens.json governs.
+   Websites use this file only (light web theme; decision 24/10/2026). Do not load the
+   artifact's generated tokens.css on a web page: its deck radii share names with the
+   web radii below at different values.
+   Copy this file into the project unchanged, import it before any other stylesheet
+   and reference the names; never write raw values in pages. */
+
+/* ==== tokens/fonts.css (verbatim) ==== */
+/* Adnex typefaces (BRAND.md v2, 23/10/2026)
+   Poppins     - the brand voice: headlines, body, every marketing surface
+   Geist Mono  - the data voice: micro labels, IDs, tags, figures, code
+   Roboto      - product interfaces only (DSP, dashboards, tables)
+   Licences: Poppins SIL OFL 1.1; Geist Mono SIL OFL 1.1; Roboto Apache 2.0 / OFL.
+   The TTFs listed in the brand sources did not arrive, so all three are linked
+   from Google Fonts. Self-host once the files are supplied: drop .woff2 into
+   tokens/fonts/ and replace the @import with local @font-face rules. */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Roboto:wght@400;500;700&display=swap');
+
+/* ==== tokens/colors.css (verbatim) ==== */
+/* ============================================================
+   ADNEX — COLOUR TOKENS (BRAND.md v2)
+   Ink on a pale purple ground. Purple is a hint, never a block.
+   Light-first: the dark (ink) bands are the dark mode.
+   ============================================================ */
+
+:root {
+  /* --- Approved brand colours (verbatim) --- */
+  --adnex-purple:    #6760FF;  /* mandatory. The one colour; works by scarcity */
+  --adnex-ink:       #1A1A2E;  /* mandatory. Text, dark bands, weight */
+  --adnex-night:     #1A0066;  /* optional. Far end of a dark gradient, never alone */
+  --adnex-deep:      #3D0099;  /* optional. Purple at label size, never a block */
+  --adnex-secondary: #5B6FFF;  /* optional. Only where Purple already present */
+  --adnex-grey:      #4A4A4A;  /* approved neutral. Secondary text */
+  --adnex-white:     #FFFFFF;
+
+  /* --- Derived tints (Purple mixed with white) --- */
+  --ground:        #E1DFFF;  /* Purple 20%. The ground band, nav, hero */
+  --ground-light:  #F0EFFF;  /* Purple 10%. Hover fill only */
+  --paper:         #F9F9FF;  /* Purple  4%. Paper band, card faces, inputs */
+  --on-dark:       #D1CFFF;  /* Purple 30%. Text and strokes on ink. 11.44:1 */
+  --outline:       rgba(26, 26, 46, 0.18);   /* 1px hairlines only */
+  --on-dark-border: rgba(209, 207, 255, 0.40); /* 1.5px borders on ink */
+  --ghost-numeral: rgba(26, 26, 46, 0.06);
+
+  /* --- Direction-of-change (data only, muted; never chrome/status) --- */
+  --delta-up:   #2F8F6A;
+  --delta-down: #B5473F;
+
+  /* ============================================================
+     SEMANTIC ALIASES
+     ============================================================ */
+
+  /* Surfaces */
+  --bg-base:        var(--paper);
+  --surface-ground: var(--ground);
+  --surface-paper:  var(--paper);
+  --surface-ink:    var(--adnex-ink);
+  --surface-hover:  var(--ground-light);
+
+  /* Text on light bands */
+  --text-primary:   var(--adnex-ink);
+  --text-secondary: var(--adnex-grey);
+  --text-label:     var(--adnex-deep);     /* purple at label size (AA) */
+  --text-accent:    var(--adnex-purple);   /* display size only */
+  --text-on-ink:    var(--on-dark);
+  --text-on-primary: var(--adnex-white);
+
+  /* Lines */
+  --border-card:    var(--adnex-ink);      /* 2.5px */
+  --border-hair:    var(--outline);        /* 1px */
+  --border-on-ink:  var(--on-dark-border); /* 1.5px */
+
+  /* Accent (the hint) */
+  --accent:         var(--adnex-purple);
+  --accent-deep:    var(--adnex-deep);
+  --focus-ring:     var(--adnex-purple);
+}
+
+/* ==== tokens/typography.css (verbatim) ==== */
+/* ============================================================
+   ADNEX — TYPOGRAPHY TOKENS (BRAND.md v2 / DESIGN.md site scale)
+   Poppins = what a person wrote. Geist Mono = what the system knows.
+   Roboto = product interfaces only.
+   ============================================================ */
+
+:root {
+  --font-brand:   'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono:    'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-product: 'Roboto', system-ui, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* Site scale (px values from DESIGN.md) */
+  --text-display-xl: 96px;
+  --text-display-lg: 64px;
+  --text-headline-lg: 40px;
+  --text-headline-md: 28px;
+  --text-headline-sm: 22px;
+  --text-body-lg: 18px;
+  --text-body-md: 16px;
+  --text-body-sm: 14px;
+  --text-label-button: 15px;
+  --text-label-md: 13px;
+  --text-label-sm: 11.5px;
+  --text-mono-md: 13px;
+  --text-stat: 72px;
+  --text-marquee: 36px;
+
+  --tracking-display-xl: -0.04em;
+  --tracking-display-lg: -0.03em;
+  --tracking-headline: -0.02em;
+  --tracking-label-md: 0.12em;
+  --tracking-label-sm: 0.10em;
+  --tracking-mono: 0.02em;
+
+  /* Composite roles */
+  --type-display-xl:  700 96px/0.92 var(--font-brand);
+  --type-display-lg:  700 64px/0.95 var(--font-brand);
+  --type-headline-lg: 600 40px/1.05 var(--font-brand);
+  --type-headline-md: 600 28px/1.15 var(--font-brand);
+  --type-headline-sm: 600 22px/1.2 var(--font-brand);
+  --type-body-lg:     500 18px/1.5 var(--font-brand);
+  --type-body-md:     400 16px/1.6 var(--font-brand);
+  --type-body-sm:     400 14px/1.5 var(--font-brand);
+  --type-label-button: 600 15px/1 var(--font-brand);
+  --type-label-md:    400 13px/1.2 var(--font-mono);
+  --type-label-sm:    400 11.5px/1.2 var(--font-mono);
+  --type-mono-md:     400 13px/1.6 var(--font-mono);
+  --type-stat:        700 72px/1 var(--font-brand);
+  --type-marquee:     700 36px/1 var(--font-brand);
+
+  /* Product (Roboto) scale for the DSP */
+  --type-product-body: 400 14px/1.5 var(--font-product);
+  --type-product-title: 500 20px/1.3 var(--font-product);
+  --type-product-h1: 500 28px/1.2 var(--font-product);
+}
+
+/* ==== tokens/spacing.css (verbatim) ==== */
+/* ============================================================
+   ADNEX — SPACING & LAYOUT (DESIGN.md)
+   4px base. 12 columns in a 1,320px container.
+   ============================================================ */
+
+:root {
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+  --space-section: 128px;
+  --space-section-mobile: 64px;
+
+  --margin-page: 44px;
+  --margin-page-mobile: 20px;
+  --gutter: 24px;
+  --container: 1320px;
+  --measure: 36rem;
+  --card-pad: 28px;
+
+  /* Control heights */
+  --control-button: 52px;
+  --control-tag: 40px;
+  --control-pill-meta: 28px;
+  --control-input: 52px;
+  --nav-height: 72px;
+  --marquee-height: 88px;
+}
+
+/* ==== tokens/effects.css (verbatim) ==== */
+/* ============================================================
+   ADNEX — SHAPES, BORDERS, SHADOW, MOTION (DESIGN.md)
+   Round controls, round cards, square bands. One hard shadow.
+   No soft shadow, no blur, no glass, no glow anywhere.
+   ============================================================ */
+
+:root {
+  /* Radii */
+  --radius-none: 0px;
+  --radius-sm:   6px;     /* inline code inside diagrams */
+  --radius-md:   12px;    /* inputs, diagram nodes */
+  --radius-lg:   24px;    /* feature / step / placement cards */
+  --radius-xl:   36px;    /* diagram cards, playground panel */
+  --radius-full: 9999px;  /* buttons, tags, pills, dot nav */
+
+  /* Border widths */
+  --border-w-card: 2.5px;  /* Ink, on light bands */
+  --border-w-button: 2px;
+  --border-w-on-ink: 1.5px;
+  --border-w-hair: 1px;
+
+  /* The offset shadow: 8px right, 8px down, zero blur, Ink.
+     Only on raised cards and controls on LIGHT bands. Never on ink. */
+  --shadow-offset: 8px 8px 0 0 var(--adnex-ink); /* @kind other */
+  --shadow-offset-hover: 8px 8px 0 0 var(--adnex-ink); /* @kind other */
+  --shadow-none: none; /* @kind other */
+
+  /* The one gradient: Purple fading toward white. Bars inside diagram
+     cards and lit edges in the hero visual only. Never a band or button. */
+  --gradient-hint: linear-gradient(90deg, #6760FF 0%, #FFFFFF 100%); /* @kind color */
+  /* Dark surfaces may run Ink to Night (deck covers, dark bands). */
+  --gradient-ink-night: linear-gradient(160deg, #1A1A2E 0%, #1A0066 100%); /* @kind color */
+
+  /* Motion: three curves, four durations */
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);    /* @kind other */ /* enters, opens */
+  --ease-back:  cubic-bezier(0.34, 1.56, 0.64, 1); /* @kind other */ /* buttons, tags, deck */
+  --ease-inout: cubic-bezier(0.76, 0, 0.24, 1);   /* @kind other */ /* band-to-band travel */
+  --duration-1: 200ms; /* @kind other */
+  --duration-2: 340ms; /* @kind other */
+  --duration-3: 500ms; /* @kind other */
+  --duration-4: 700ms; /* @kind other */
+}
+
+/* ==== tokens/base.css (verbatim) ==== */
+/* ============================================================
+   ADNEX — BASE / RESET. Light-first, ink on paper.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font: var(--type-body-md);
+  color: var(--text-primary);
+  background: var(--bg-base);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6, p { margin: 0; }
+h1 { font: var(--type-display-lg); letter-spacing: var(--tracking-display-lg); }
+h2 { font: var(--type-headline-lg); letter-spacing: var(--tracking-headline); }
+h3 { font: var(--type-headline-md); letter-spacing: -0.015em; }
+h4 { font: var(--type-headline-sm); letter-spacing: -0.01em; }
+
+a { color: var(--text-label); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+
+code, kbd, samp, pre { font-family: var(--font-mono); }
+
+/* Data: mono, tabular, ALWAYS left-aligned, including numbers */
+.adnex-data, table.adnex-table th, table.adnex-table td {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  text-align: left;
+}
+
+::selection { background: var(--ground); color: var(--adnex-ink); }
+
+:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* ==== components/components.css (verbatim) ==== */
+/* ============================================================
+   ADNEX — component interaction states (DESIGN.md motion)
+   Base appearance is inline in the React components; this adds
+   hover / press / focus keyed off stable class names.
+   ============================================================ */
+
+/* Button primary: text shifts to On-dark, arrow travels 4px on ease-back; press scales 0.97 */
+.adnex-btn { transition: color var(--duration-1) var(--ease-back), background var(--duration-1) var(--ease-back), transform var(--duration-1) var(--ease-back); -webkit-tap-highlight-color: transparent; }
+.adnex-btn .adnex-btn__arrow { display: inline-block; transition: transform var(--duration-1) var(--ease-back); }
+.adnex-btn--primary:not([disabled]):hover { color: var(--on-dark); }
+.adnex-btn--primary:not([disabled]):hover .adnex-btn__arrow { transform: translateX(4px); }
+.adnex-btn--secondary:not([disabled]):hover { background: var(--ground-light); }
+.adnex-btn--secondary:not([disabled]):hover .adnex-btn__arrow { transform: translateX(4px); }
+.adnex-btn--on-dark:not([disabled]):hover { color: var(--adnex-white); }
+.adnex-btn--on-dark:not([disabled]):hover .adnex-btn__arrow { transform: translateX(4px); }
+.adnex-btn:not([disabled]):active { transform: scale(0.97); }
+
+/* Tags: lift 4px and gain the offset shadow on hover (light bands only) */
+.adnex-tag { transition: transform var(--duration-1) var(--ease-back), box-shadow var(--duration-1) var(--ease-back), background var(--duration-1) var(--ease-back); }
+.adnex-tag--interactive { cursor: pointer; }
+.adnex-tag--interactive:hover { transform: translateY(-4px); box-shadow: var(--shadow-offset); }
+.adnex-tag--interactive:active { transform: scale(0.97); }
+.adnex-tag--outline.adnex-tag--interactive:hover { background: var(--ground-light); }
+
+/* Cards */
+.adnex-card { transition: transform var(--duration-1) var(--ease-back), box-shadow var(--duration-1) var(--ease-back); }
+.adnex-card--interactive { cursor: pointer; }
+.adnex-card--interactive:hover { transform: translateY(-4px); }
+.adnex-card--interactive.adnex-card--raised:hover { box-shadow: var(--shadow-offset); }
+.adnex-card--interactive:active { transform: scale(0.99); }
+
+/* Inputs: 3px Secondary ring on focus; error border turns Deep (no red) */
+.adnex-input, .adnex-select { transition: box-shadow var(--duration-1) var(--ease-out), border-color var(--duration-1) var(--ease-out); }
+.adnex-input:focus, .adnex-select:focus { outline: none; box-shadow: 0 0 0 3px var(--adnex-purple); }
+.adnex-input::placeholder { color: var(--adnex-grey); }
+
+/* Switch */
+.adnex-switch__track { transition: background var(--duration-1) var(--ease-out); }
+.adnex-switch__thumb { transition: transform var(--duration-2) var(--ease-back); }
+
+/* Inline link */
+.adnex-link { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.adnex-link:hover { text-decoration-thickness: 2px; }
+
+/* ==== Artifact aliases (added 24/10/2026) ====
+   The design system's tokens.json colour names, resolved to the v2 variables above,
+   so that deck and web vocabulary agree on a page. Colours only: spacing and radius
+   names differ between the two scales on purpose. */
+:root {
+  --brand-primary: var(--adnex-purple);
+  --brand-deep: var(--adnex-deep);
+  --brand-deeper: var(--adnex-night);
+  --brand-blue: var(--adnex-secondary);
+  --surface-0: var(--ground);
+  --surface-1: var(--paper);
+  --surface-2: var(--ground-light);
+  --surface-brand: var(--adnex-ink);
+  --border: var(--adnex-ink);
+  --border-subtle: var(--outline);
+  --ink: var(--adnex-ink);
+  --ink-secondary: var(--adnex-grey);
+  --ink-muted: var(--adnex-grey);
+}

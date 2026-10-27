@@ -1,0 +1,10 @@
+{
+  "name": "adcrypt-site",
+  "private": true,
+  "description": "Static product page for AdCrypt at adnex.io/adcrypt. Plain HTML and CSS, no framework.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "preview": "npm run build && python3 -m http.server 8080 --directory dist",
+    "check": "node scripts/check-copy.mjs"
+  }
+}

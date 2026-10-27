@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AdCrypt · Telegram Ads, without the grind</title>
+<meta name="description" content="AdCrypt is the Adnex Chrome extension for Telegram Ads. Many ads in one go, scores before you buy, verdicts while you run, Gram or USD.">
+<meta property="og:title" content="AdCrypt · Telegram Ads, without the grind">
+<meta property="og:description" content="The Adnex Chrome extension for Telegram Ads. You know the drill. We fixed it.">
+<!-- og:image: no social preview image on file yet. Input needed from Bertan. -->
+<link rel="canonical" href="https://adnex.io/adcrypt/">
+<link rel="icon" type="image/svg+xml" href="assets/logo/adnex-icon_tile_favicon.svg">
+<link rel="stylesheet" href="ds/adnex/website/web-tokens.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;display=swap">
+</head>
+<body>
+<style>
+/* AdCrypt page on the Adnex web tokens. Decision 25/10/2026: the page carries the AdCrypt baby blue from the creatives in place of lavender and purple. Proposed tokens, derived from #EAF2FF and #2AABEE; not yet in the design system. */
+:root{--ground:#EAF2FF;--ground-light:#F5F9FF;--paper:#FBFCFF;--on-dark:#E0ECFF;--on-dark-border:rgba(224,236,255,.4);--accent:#2AABEE;--accent-deep:#0B4F7A;--text-label:var(--accent-deep);--focus-ring:var(--accent-deep)}
+html,body{margin:0}
+body{background:var(--paper);color:var(--adnex-ink);font:var(--type-body-md);-webkit-font-smoothing:antialiased}
+a{color:var(--accent-deep)}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 var(--margin-page);box-sizing:border-box}
+.band{padding:var(--space-section) 0}
+.ground{background:var(--ground)}.paper{background:var(--paper)}.ink{background:var(--adnex-ink);color:var(--on-dark)}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gutter)}
+.label{display:inline-flex;align-items:center;gap:var(--space-sm);font:var(--type-label-md);letter-spacing:var(--tracking-label-md);text-transform:uppercase;color:var(--accent-deep)}
+.label .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none}
+.label img{width:18px;height:18px;display:block;flex:none}
+.btn img{width:20px;height:20px;display:block;flex:none}
+.logos{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:var(--space-lg)}
+.logos span{display:inline-flex;align-items:center;gap:10px;font:var(--type-mono-md);letter-spacing:var(--tracking-mono);color:var(--adnex-grey)}
+.logos img{width:28px;height:28px;display:block;border-radius:var(--radius-sm)}
+.ink .logos span{color:var(--on-dark)}
+.art{height:44px;display:flex;align-items:center;margin-top:var(--space-xs)}
+.art img{height:40px;width:auto;display:block}
+.art .round{width:40px;height:40px}
+.brand .pill-meta{display:inline-flex;align-items:center;gap:var(--space-sm);height:var(--control-pill-meta);padding:0 10px 0 6px;text-transform:none;letter-spacing:0;font:var(--type-mono-md);color:var(--adnex-ink);border-color:var(--outline)}
+.brand .pill-meta img{width:18px;height:18px;display:block}
+.ink .label{color:var(--on-dark)}
+h1,h2,h3{margin:0;color:var(--adnex-ink);text-wrap:balance}
+.ink h2,.ink h3{color:var(--on-dark)}
+h1{font:var(--type-headline-lg);letter-spacing:var(--tracking-headline);margin-top:var(--space-lg)}
+h2{font:var(--type-headline-md);letter-spacing:var(--tracking-headline);margin-top:20px}
+@media (min-width:1024px){h2{font:var(--type-headline-lg)}}
+@media (min-width:1200px){h1{font:var(--type-display-lg);letter-spacing:var(--tracking-display-lg)}}
+h3{font:var(--type-headline-sm);letter-spacing:-0.01em}
+p{margin:0}
+.lead{font:var(--type-body-lg);max-width:var(--measure);margin-top:20px}
+.copy{font:var(--type-body-md);max-width:var(--measure)}
+.ink .lead,.ink .copy{color:var(--on-dark)}
+.mono{font:var(--type-mono-md);letter-spacing:var(--tracking-mono);color:var(--adnex-grey)}
+.ink .mono{color:var(--on-dark)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:var(--control-button);padding:0 28px;border-radius:var(--radius-full);border:var(--border-w-button) solid var(--adnex-ink);font:var(--type-label-button);text-decoration:none;white-space:nowrap;cursor:pointer;box-sizing:border-box;transition:color var(--duration-1) var(--ease-back),background var(--duration-1) var(--ease-back),transform var(--duration-1) var(--ease-back)}
+.btn .arrow{display:inline-block;transition:transform var(--duration-1) var(--ease-back)}
+.btn:hover .arrow{transform:translateX(4px)}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--adnex-ink);color:var(--adnex-white)}.btn-primary:hover{color:var(--on-dark)}
+.btn-secondary{background:var(--paper);color:var(--adnex-ink)}.btn-secondary:hover{background:var(--ground-light)}
+.btn-on-dark{background:var(--adnex-ink);color:var(--on-dark);border:var(--border-w-on-ink) solid var(--on-dark-border)}.btn-on-dark:hover{color:var(--adnex-white)}
+.btn-on-dark-fill{background:var(--on-dark);color:var(--adnex-ink);border:var(--border-w-button) solid var(--on-dark)}.btn-on-dark-fill:hover{color:var(--adnex-ink);background:var(--adnex-white)}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
+.pill-meta{display:inline-flex;align-items:center;height:var(--control-pill-meta);padding:0 14px;border-radius:var(--radius-full);border:var(--border-w-on-ink) solid color-mix(in srgb, var(--accent-deep) 50%, transparent);font:var(--type-label-sm);letter-spacing:var(--tracking-label-sm);text-transform:uppercase;color:var(--accent-deep);white-space:nowrap}
+.card{background:var(--paper);border:var(--border-w-card) solid var(--adnex-ink);border-radius:var(--radius-lg);padding:var(--card-pad);box-sizing:border-box;transition:transform var(--duration-1) var(--ease-back),box-shadow var(--duration-1) var(--ease-back)}
+.card-raised{box-shadow:var(--shadow-offset)}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gutter);margin-top:48px}
+.rows{border-top:var(--border-w-hair) solid var(--outline)}
+.rows > div{display:grid;grid-template-columns:200px 1fr;gap:var(--gutter);padding:20px 0;border-bottom:var(--border-w-hair) solid var(--outline);align-items:baseline}
+.ink .rows{border-top-color:var(--on-dark-border)}.ink .rows > div{border-bottom-color:var(--on-dark-border)}
+.arrows{list-style:none;margin:var(--space-lg) 0 0;padding:0;display:flex;flex-direction:column;gap:10px;font:var(--type-mono-md);letter-spacing:var(--tracking-mono)}
+.arrows li::before{content:"→ ";color:var(--accent-deep)}
+.ink .arrows{color:var(--on-dark)}.ink .arrows li::before{color:var(--accent)}
+@media (min-width:1200px){.cards.seven{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.shot{margin:0;min-width:0}
+video{display:block;width:100%;height:auto;aspect-ratio:1316/716;background:var(--adnex-white)}
+.film video{aspect-ratio:16/9}
+figcaption{margin-top:12px}
+header.nav{position:sticky;top:0;z-index:20;height:var(--nav-height);background:var(--ground);border-bottom:var(--border-w-hair) solid var(--outline)}
+header.nav .wrap{height:100%;display:flex;align-items:center;gap:var(--space-lg)}
+.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--adnex-ink);font:var(--type-label-button)}
+.brand > img{margin-right:22px}
+.price{font:var(--type-headline-lg);letter-spacing:var(--tracking-headline);margin-top:var(--space-md)}
+.frame{border:var(--border-w-card) solid var(--adnex-ink);border-radius:var(--radius-md);box-shadow:var(--shadow-offset);overflow:hidden;background:var(--adnex-white);margin:0 var(--space-sm) var(--space-sm) 0}
+.tiers .card{display:flex;flex-direction:column}
+.tiers .action{margin-top:auto;padding-top:24px}
+.nav-links{margin-left:auto;display:flex;align-items:center;gap:var(--space-lg)}
+.nav-links a.link{font:var(--type-label-button);color:var(--adnex-ink);text-decoration:none;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center}
+.nav-links a.link:hover{text-decoration:underline;text-underline-offset:4px}
+.menu{display:none;margin-left:auto}
+.menu summary{list-style:none;display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 18px;border-radius:var(--radius-full);border:var(--border-w-button) solid var(--adnex-ink);background:var(--paper);font:var(--type-label-button);cursor:pointer}
+.menu summary::-webkit-details-marker{display:none}
+.menu summary::after{content:"\00a0+"}.menu[open] summary::after{content:"\00a0×"}
+.menu-sheet{position:fixed;left:0;right:0;top:var(--nav-height);bottom:0;background:var(--ground);padding:var(--space-lg) 20px;display:flex;flex-direction:column;gap:var(--space-xs);border-top:var(--border-w-hair) solid var(--outline);z-index:19}
+.menu-sheet a.link{font:var(--type-headline-sm);color:var(--adnex-ink);text-decoration:none;min-height:var(--control-button);display:flex;align-items:center}
+.faq details{border-bottom:var(--border-w-hair) solid var(--outline)}
+.faq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;cursor:pointer;font:var(--type-headline-sm);color:var(--adnex-ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:600 22px/1 var(--font-brand);flex:none}
+.faq details[open] summary::after{content:"×"}
+.faq details p{margin:6px 0 18px;max-width:40rem}
+.skip{position:absolute;left:var(--space-md);top:-100px;z-index:30;background:var(--paper);color:var(--adnex-ink);padding:var(--space-sm) var(--space-md);border:var(--border-w-button) solid var(--adnex-ink);border-radius:var(--radius-md);font:var(--type-label-button)}
+.skip:focus{top:calc(var(--nav-height) + var(--space-md))}
+:focus-visible{outline:3px solid var(--focus-ring);outline-offset:2px}
+.ink :focus-visible{outline-color:var(--accent)}
+section[id],footer{scroll-margin-top:calc(var(--nav-height) + var(--space-sm))}
+a,summary{scroll-margin-top:calc(var(--nav-height) + var(--space-md))}
+.ghost{position:absolute;right:-8px;bottom:-120px;font:700 320px/1 var(--font-brand);letter-spacing:var(--tracking-display-xl);color:var(--ghost-numeral);user-select:none;pointer-events:none}
+footer .frow{display:flex;justify-content:space-between;gap:var(--space-lg);flex-wrap:wrap;padding:20px 0;border-top:var(--border-w-hair) solid var(--on-dark-border)}
+footer a{color:var(--on-dark)}
+@media (max-width:1023px){
+  .wrap{padding:0 var(--margin-page-mobile)}
+  .band{padding:var(--space-section-mobile) 0}
+  .grid{grid-template-columns:1fr}
+  .grid > *{grid-column:auto !important}
+  .nav-links{display:none}
+  .menu{display:block}
+  .rows > div{grid-template-columns:1fr;gap:6px}
+  .ghost{display:none}
+  .cards{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .shot-after{order:1}
+  .shot{width:auto !important;height:auto !important}
+  .price{font:var(--type-headline-md)}
+}
+@media (min-width:640px) and (max-width:1023px){.tiers > :last-child{grid-column:1 / -1}}
+@media (max-width:639px){.actions .btn{width:100%}.brand .pill-meta{display:none}}
+@media (prefers-reduced-motion:reduce){.btn,.btn .arrow,.card{transition:none}}
+</style>
+<div style="background:var(--paper);color:var(--adnex-ink);font-family:var(--font-brand);min-width:0">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+<div class="wrap">
+<a class="brand" href="#hero" aria-label="AdCrypt, top of page"><img src="assets/logo/adnex-icon_01_full-colour.svg" alt="" width="32" height="32" style="width:32px;height:32px;display:block"><span class="pill-meta" style="margin-left:22px"><img src="assets/logo/telegram-logo.png" alt="">for Telegram Ads</span></a>
+<nav class="nav-links" aria-label="Main">
+<a class="link" href="#features">Features</a>
+<a class="link" href="#how-it-works">How it works</a>
+<a class="link" href="#privacy">Privacy</a>
+<a class="link" href="#licence">Licence</a>
+<a class="link" href="#faq">FAQ</a>
+<a class="link" href="mailto:bertan@adnex.io?subject=AdCrypt">Talk to Adnex</a>
+<a class="btn btn-primary" href="mailto:bertan@adnex.io?subject=AdCrypt%20extension"><img src="assets/logo/chrome-logo.png" alt="">Add to Chrome <span class="arrow" aria-hidden="true">→</span></a>
+</nav>
+<details class="menu">
+<summary aria-label="Menu">Menu</summary>
+<nav class="menu-sheet" aria-label="Main">
+<a class="link" href="#features">Features</a>
+<a class="link" href="#how-it-works">How it works</a>
+<a class="link" href="#privacy">Privacy</a>
+<a class="link" href="#licence">Licence</a>
+<a class="link" href="#faq">FAQ</a>
+<a class="link" href="mailto:bertan@adnex.io?subject=AdCrypt">Talk to Adnex</a>
+<a class="btn btn-primary" style="margin-top:16px" href="mailto:bertan@adnex.io?subject=AdCrypt%20extension"><img src="assets/logo/chrome-logo.png" alt="">Add to Chrome <span class="arrow" aria-hidden="true">→</span></a>
+</nav>
+</details>
+</div>
+</header>
+
+<main id="main">
+
+<section id="hero" class="band ground" style="padding-top:var(--space-3xl);position:relative;overflow:hidden">
+<div class="wrap grid" style="align-items:center">
+<div style="grid-column:span 5;min-width:0">
+<span class="label"><img src="assets/logo/telegram-logo.png" alt="">AdCrypt · Chrome extension for Telegram Ads</span>
+<h1>Telegram Ads, without the grind.</h1>
+<p class="lead">You know the drill. We fixed it.</p>
+<div class="actions">
+<a class="btn btn-primary" href="mailto:bertan@adnex.io?subject=AdCrypt%20extension"><img src="assets/logo/chrome-logo.png" alt="">Add to Chrome <span class="arrow" aria-hidden="true">→</span></a>
+<a class="btn btn-secondary" href="mailto:bertan@adnex.io?subject=AdCrypt">Talk to Adnex</a>
+</div>
+<div class="logos"><span><img src="assets/logo/telegram-logo.png" alt="">Runs on ads.telegram.org</span><span><img src="assets/logo/chrome-logo.png" alt="">Chrome, Manifest V3</span><span><img src="assets/logo/gram-logo.png" alt="">Gram and USD</span></div>
+<p class="mono" style="margin-top:20px">v1.1.3 · licence key in Options</p>
+</div>
+<figure class="shot" style="grid-column:7 / -1">
+<video autoplay="" muted="" loop="" playsinline="" preload="auto" poster="assets/horse/adcrypt-horse-poster.jpg" aria-label="A galloping horse, drawn in blue pixels" style="aspect-ratio:1136/758;background:var(--ground)"><source src="assets/horse/adcrypt-horse-1136x758.webm" type="video/webm"><source src="assets/horse/adcrypt-horse-1136x758.mp4" type="video/mp4"></video>
+</figure>
+</div>
+</section>
+
+<section id="problem" class="band ink">
+<div class="wrap grid" style="align-items:start">
+<div style="grid-column:span 6"><span class="label"><span class="dot"></span>The problem</span><h2>You've been here.</h2><p class="lead" style="margin-top:var(--space-lg)">It shouldn't be this hard.</p></div>
+<div style="grid-column:8 / span 5"><ul class="arrows" style="margin-top:var(--space-sm)">
+<li>One ad. Then another. Then another.</li>
+<li>Targeting by hand</li>
+<li>Bids by hand</li>
+<li>No idea which channels work</li>
+<li>Budget gone on bad channels</li>
+<li>Numbers only in Gram</li>
+</ul></div>
+</div>
+</section>
+
+<section id="film" class="band ground">
+<div class="wrap">
+<span class="label"><span class="dot"></span>The film · 49 seconds</span>
+<h2>AdCrypt in 49 seconds.</h2>
+<figure class="shot film" style="margin-top:var(--space-xl)">
+<div class="frame"><video controls="" preload="metadata" playsinline="" poster="assets/film/adcrypt-launch-film-poster.jpg" aria-label="AdCrypt launch film. Telegram Ads with AdCrypt, from bulk channel targeting to bulk edits"><source src="assets/film/adcrypt-launch-film-1920x1080.webm" type="video/webm"><source src="assets/film/adcrypt-launch-film-1920x1080.mp4" type="video/mp4"></video></div>
+<figcaption class="mono">Music, no narration. Example data.</figcaption>
+</figure>
+</div>
+</section>
+
+<section id="adds" class="band paper">
+<div class="wrap">
+<span class="label"><span class="dot"></span>My ads table</span>
+<h2>Know before you buy.</h2>
+<p class="lead">Three columns the dashboard does not have.</p>
+<div class="rows" style="margin-top:var(--space-xl)">
+<div><h3>Verdict</h3><p class="copy">Keep, watch or pause.</p></div>
+<div><h3>CPM</h3><p class="copy">The price band, next to the ad.</p></div>
+<div><h3>Score</h3><p class="copy">Audience fit, post frequency, bot share, CPM band. One number.</p></div>
+</div>
+</div>
+</section>
+
+<section id="features" class="band ground" style="position:relative;overflow:hidden">
+<span class="ghost" aria-hidden="true">07</span>
+<div class="wrap" style="position:relative">
+<span class="label"><span class="dot"></span>The fix</span>
+<h2>The fix, right inside Telegram Ads.</h2>
+<div class="cards seven">
+<div class="card"><span class="mono" style="color:var(--accent-deep)">01</span><h3 style="margin-top:12px">Bulk create</h3><p class="copy" style="margin-top:var(--space-sm);color:var(--adnex-grey)">Many ads. One go.</p></div>
+<div class="card"><span class="mono" style="color:var(--accent-deep)">02</span><h3 style="margin-top:12px">Saved lists</h3><p class="copy" style="margin-top:var(--space-sm);color:var(--adnex-grey)">Build once. Reuse forever.</p></div>
+<div class="card"><span class="mono" style="color:var(--accent-deep)">03</span><h3 style="margin-top:12px">Bulk edits</h3><p class="copy" style="margin-top:var(--space-sm);color:var(--adnex-grey)">Bids and budgets, all at once.</p></div>
+<div class="card"><span class="mono" style="color:var(--accent-deep)">04</span><h3 style="margin-top:12px">Channel scores</h3><p class="copy" style="margin-top:var(--space-sm);color:var(--adnex-grey)">Know before you buy.</p></div>
+<div class="card"><span class="mono" style="color:var(--accent-deep)">05</span><h3 style="margin-top:12px">Live verdicts</h3><p class="copy" style="margin-top:var(--space-sm);color:var(--adnex-grey)">Keep, watch or pause.</p></div>
+<div class="card"><span class="mono" style="color:var(--accent-deep)">06</span><h3 style="margin-top:12px">Kill switch</h3><p class="copy" style="margin-top:var(--space-sm);color:var(--adnex-grey)">Bad channels stop themselves.</p></div>
+<div class="card"><span class="mono" style="color:var(--accent-deep)">07</span><div class="art"><img class="round" src="assets/logo/gram-logo.png" alt="" style="border-radius:8px"></div><h3 style="margin-top:12px">Gram / USD</h3><p class="copy" style="margin-top:var(--space-sm);color:var(--adnex-grey)">Your numbers, your currency.</p></div>
+</div>
+</div>
+</section>
+
+<section id="lists" class="band paper">
+<div class="wrap grid" style="align-items:center">
+<figure class="shot shot-after" style="grid-column:span 7">
+<div class="frame"><video autoplay="" muted="" loop="" playsinline="" preload="metadata" poster="assets/video/adcrypt-b-window-poster.jpg" aria-label="The AdCrypt panel inserts nine saved channels into the Channels field of a Telegram Ads New ad form. Create ad becomes Create 9 ads"><source src="assets/video/adcrypt-b-window-1316x716.webm" type="video/webm"><source src="assets/video/adcrypt-b-window-1316x716.mp4" type="video/mp4"></video></div>
+<figcaption class="mono">Example data.</figcaption>
+</figure>
+<div style="grid-column:9 / span 4;min-width:0">
+<span class="label"><span class="dot"></span>Saved lists</span>
+<h2>Build once. Reuse forever.</h2>
+<ul class="arrows">
+<li>Saved lists, JSON or CSV</li>
+<li>Many ads. One go.</li>
+<li>One ad per channel</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="how-it-works" class="band ground">
+<div class="wrap">
+<span class="label"><span class="dot"></span>How it works</span>
+<h2>Up and running in minutes.</h2>
+<div class="grid" style="margin-top:48px;align-items:center">
+<figure class="shot" style="grid-column:span 7">
+<div class="frame"><video autoplay="" muted="" loop="" playsinline="" preload="metadata" poster="assets/video/adcrypt-c-window-poster.jpg" aria-label="The AdCrypt icon lands in the Chrome toolbar, Telegram Ads opens and the AdCrypt panel scores the channels in the My ads table"><source src="assets/video/adcrypt-c-window-1316x716.webm" type="video/webm"><source src="assets/video/adcrypt-c-window-1316x716.mp4" type="video/mp4"></video></div>
+<figcaption class="mono">Example data.</figcaption>
+</figure>
+<div style="grid-column:9 / span 4;display:flex;flex-direction:column;gap:var(--gutter);min-width:0">
+<div class="card"><span class="mono" style="color:var(--accent-deep)">01</span><div class="art"><a href="mailto:bertan@adnex.io?subject=AdCrypt%20extension" aria-label="AdCrypt in the Chrome Web Store"><img src="assets/logo/cws-lockup.png" alt="Chrome Web Store" style="height:44px"></a></div><h3 style="margin-top:12px">Install</h3><p class="copy" style="margin-top:var(--space-sm);color:var(--adnex-grey)">From the Chrome Web Store.</p></div>
+<div class="card"><span class="mono" style="color:var(--accent-deep)">02</span><div class="art"><img class="round" src="assets/logo/telegram-logo.png" alt=""></div><h3 style="margin-top:12px">Open ads.telegram.org</h3><p class="copy" style="margin-top:var(--space-sm);color:var(--adnex-grey)">As usual.</p></div>
+<div class="card"><span class="mono" style="color:var(--accent-deep)">03</span><div class="art"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="var(--accent-deep)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="12" r="4"></circle><path d="M12 12h9"></path><path d="M18 12v3M21 12v2"></path></svg></div><h3 style="margin-top:12px">Add your key</h3><p class="copy" style="margin-top:var(--space-sm);color:var(--adnex-grey)">Done.</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="scoring" class="band paper">
+<div class="wrap grid" style="align-items:start">
+<div style="grid-column:span 6">
+<span class="label"><span class="dot"></span>Scoring</span>
+<h2>Score first. Verdict live.</h2>
+<p class="copy" style="margin-top:20px">Channel score before spend. Live verdict after. Both in the table you already use.</p>
+</div>
+<div style="grid-column:8 / span 5;min-width:0">
+<h3>Kill switch</h3>
+<p class="copy" style="margin-top:12px">Bad channels stop themselves. Every pause is logged. One click reverses it.</p>
+<p class="mono" style="margin-top:var(--space-lg)">Example rules</p>
+<div class="rows" style="margin-top:12px">
+<div style="grid-template-columns:1fr"><span class="mono" style="color:var(--adnex-ink)">spend &gt; 100 Gram, 0 results → pause</span></div>
+<div style="grid-template-columns:1fr"><span class="mono" style="color:var(--adnex-ink)">CTR under the floor after 32,000 views → pause</span></div>
+<div style="grid-template-columns:1fr"><span class="mono" style="color:var(--adnex-ink)">CPA above 2x the group median → watch</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="privacy" class="band ink">
+<div class="wrap grid" style="align-items:start">
+<div style="grid-column:span 6"><span class="label"><img src="assets/logo/telegram-logo.png" alt="">Privacy and security</span><h2>Runs on ads.telegram.org. Data stays in the browser.</h2></div>
+<div style="grid-column:8 / span 5" class="rows">
+<div style="grid-template-columns:1fr"><p class="copy">→ Storage permission, nothing else.</p></div>
+<div style="grid-template-columns:1fr"><p class="copy">→ No outside calls unless you set a licence server.</p></div>
+<div style="grid-template-columns:1fr"><p class="copy">→ Permissions listed in full on the Web Store page.</p></div>
+</div>
+</div>
+</section>
+
+<section id="licence" class="band ground">
+<div class="wrap">
+<span class="label"><span class="dot"></span>Licence</span>
+<h2>Add your key. Done.</h2>
+<div class="cards tiers">
+<div class="card"><h3>Solo</h3><div class="price" style="color:var(--adnex-grey)">[price pending]</div><p class="copy" style="margin-top:10px;color:var(--adnex-grey)">1 Telegram Ads account</p><div class="action"><a class="btn btn-secondary" href="mailto:bertan@adnex.io?subject=AdCrypt%20Solo"><img src="assets/logo/chrome-logo.png" alt="">Add to Chrome <span class="arrow" aria-hidden="true">→</span></a></div></div>
+<div class="card"><h3>Agency</h3><div class="price" style="color:var(--adnex-grey)">[price pending]</div><p class="copy" style="margin-top:10px;color:var(--adnex-grey)">Unlimited accounts, shared lists</p><div class="action"><a class="btn btn-secondary" href="mailto:bertan@adnex.io?subject=AdCrypt%20Agency"><img src="assets/logo/chrome-logo.png" alt="">Add to Chrome <span class="arrow" aria-hidden="true">→</span></a></div></div>
+<div class="card"><h3>Managed by Adnex</h3><div class="price">Quote</div><p class="copy" style="margin-top:10px;color:var(--adnex-grey)">We run the campaigns. You see the verdicts.</p><div class="action"><a class="btn btn-secondary" href="mailto:bertan@adnex.io?subject=AdCrypt%20managed">Talk to Adnex</a></div></div>
+</div>
+<p class="mono" style="margin-top:var(--space-lg)">[Prices pending]</p>
+</div>
+</section>
+
+<section id="faq" class="band paper">
+<div class="wrap grid" style="align-items:start">
+<div style="grid-column:span 5"><span class="label"><span class="dot"></span>Questions</span><h2>Asked before the licence.</h2></div>
+<div class="faq" style="grid-column:7 / span 6;border-top:var(--border-w-hair) solid var(--outline)">
+<details><summary>Does it work with accounts funded in Gram?</summary><p class="copy">Yes. Gram by default. One toggle for USD.</p></details>
+<details><summary>What does the extension read and store?</summary><p class="copy">The campaign and ad tables on ads.telegram.org, plus your lists and rules. All in browser storage.</p></details>
+<details><summary>Can a rule pause an ad by mistake?</summary><p class="copy">A rule does what it says. Every pause is logged. One click reverses it.</p></details>
+<details><summary>Which browsers?</summary><p class="copy">Chrome. [Other Chromium browsers: to confirm]</p></details>
+<details><summary>Is there a trial?</summary><p class="copy">[To confirm]</p></details>
+</div>
+</div>
+</section>
+
+<section id="close" class="band ground">
+<div class="wrap" style="display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap">
+<div><h2 style="margin-top:0">Your campaigns. Your rules.</h2><p class="lead" style="margin-top:12px">Less clicking. More results.</p></div>
+<div class="actions" style="margin-top:0">
+<a class="btn btn-primary" href="mailto:bertan@adnex.io?subject=AdCrypt%20extension"><img src="assets/logo/chrome-logo.png" alt="">Add to Chrome <span class="arrow" aria-hidden="true">→</span></a>
+<a class="btn btn-secondary" href="mailto:bertan@adnex.io?subject=AdCrypt">Talk to Adnex</a>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer class="band ink" style="padding-bottom:var(--space-xl)">
+<div class="wrap">
+<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;padding-bottom:32px">
+<div><a href="https://adnex.io" style="display:inline-block;text-decoration:none"><img src="assets/logo/adnex-logo_horizontal_dark.svg" alt="Adnex" width="160" height="40" style="width:160px;height:auto;display:block"></a><p class="mono" style="margin-top:var(--space-md)">Built by Adnex · Part of The Nexum Group</p></div>
+<div class="logos" style="margin-top:0"><span><img src="assets/logo/telegram-logo.png" alt="">Telegram Ads</span><span><img src="assets/logo/chrome-logo.png" alt="">Chrome</span><span><img src="assets/logo/gram-logo.png" alt="">Gram</span></div>
+</div>
+<div class="frow"><span class="mono">adnex.io · bertan@adnex.io · Unconventional advertising</span><span class="mono"><a href="#privacy">Privacy [page to confirm]</a> · <a href="#licence">Terms [page to confirm]</a></span></div>
+<div class="frow"><span class="mono">Adnex Advertising Solutions L.L.C-FZ. Licence No. 2527002.01. [Registered address: to confirm]</span></div>
+<div class="frow" style="border-bottom:0"><span class="mono">Telegram, Chrome and Gram names and logos belong to their respective owners. AdCrypt is not affiliated with, endorsed by or sponsored by Telegram or Google.</span></div>
+</div>
+</footer>
+</div>
+<script>
+(function () {
+    try {
+      var menu = document.querySelector('details.menu');
+      if (menu) menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { menu.removeAttribute('open'); }); });
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('video[autoplay]').forEach(function (v) { v.removeAttribute('autoplay'); v.removeAttribute('loop'); v.pause(); });
+      }
+    } catch (e) {}
+})();
+</script>
+</body>
+</html>
