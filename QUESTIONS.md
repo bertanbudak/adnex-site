@@ -43,6 +43,8 @@ BRIEF.md asks for assets cached for a year and HTML for five minutes. `ds/adnex/
 
 On disk, `public/assets/` is 12,048,771 bytes (12.05 MB decimal). That includes the MP4 fallbacks, which a Chrome visitor does not download. Without the MP4 files it is 6,608,617 bytes (6.6 MB), and without the film 2,195,769 bytes (2.2 MB). Input needed: which total the brief means, with or without the MP4 fallbacks, so the check can be signed off.
 
-## 10. Repository and PR
+## 10. Repository, PR and preview
 
-The repository is initialised locally with no commit. A commit, a remote and a pull request need a GitHub repository name and owner. `gh` is not installed here, so the PR cannot be opened from this session yet.
+The branch `adcrypt-page` is pushed to `bertanbudak/adnex-site`. The pull request is not open yet: the GitHub account on this Mac can push but has no pull-request permission. Input needed: open the PR from the compare link, or grant pull-request access.
+
+The Vercel deployment `adcrypt-site` was assigned to production by the first deploy, against the instruction for a preview only. It is live at adcrypt-site.vercel.app. Input needed: remove the production alias and project, or keep it. No preview-only deployment exists yet.
