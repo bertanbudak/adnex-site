@@ -48,3 +48,10 @@ On disk, `public/assets/` is 12,048,771 bytes (12.05 MB decimal). That includes 
 The branch `adcrypt-page` is pushed to `bertanbudak/adnex-site`. The pull request is not open yet: the GitHub account on this Mac can push but has no pull-request permission. Input needed: open the PR from the compare link, or grant pull-request access.
 
 The Vercel deployment `adcrypt-site` was assigned to production by the first deploy, against the instruction for a preview only. It is live at adcrypt-site.vercel.app. Input needed: remove the production alias and project, or keep it. No preview-only deployment exists yet.
+
+## 11. New motion clip: placement and crop
+
+Added `01 · Elastic — spring & rebound (7).mp4` (a Telegram paper plane, 3.2 s loop, no audio) to the ink privacy band, under its heading. The clip is a paper plane on a black ground, so the page blends it with `mix-blend-mode: screen`, which hides the black. This is a visible change to the approved design, so placement needs Bertan's approval. Two points:
+- The source frames crop the plane at the left and bottom edges. A re-export with a margin around the plane would remove the crop.
+- At 576 px wide the plane dominates the left column and makes the band taller. A smaller size would need a new token or a width rule, so it is left at the page's measure for now.
+Files: `public/assets/elastic/` (WebM 54 KB, MP4 59 KB, poster 12 KB). Existing content is unchanged.
